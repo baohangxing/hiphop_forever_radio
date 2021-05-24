@@ -1,0 +1,35 @@
+{
+    "name": "hiphop_forever_radio",
+    "version": "0.0.1",
+    "description": "a radio online for HipHop made entirely in Node.js",
+    "homepage": "https://github.com/baohangxing/hiphop_forever_radio",
+    "repository": "https://github.com/baohangxing/hiphop_forever_radio",
+    "main": "./app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node ./app.js"
+    },
+    "bin": {
+        "node-radio-start": "./app.js"
+    },
+    "dependencies": {
+        "@dropb/ffprobe": "^1.4.2",
+        "@hapi/hapi": "^19.x.x",
+        "@hapi/inert": "^5.2.2",
+        "dotenv": "^8.2.0",
+        "throttle": "^1.0.3"
+    },
+    "keywords": [
+        "node",
+        "nodejs",
+        "radio",
+        "song",
+        "live",
+        "streaming",
+        "internet",
+        "music",
+        "hiphop"
+    ],
+    "author": "H1mple",
+    "license": "MIT"
+}
