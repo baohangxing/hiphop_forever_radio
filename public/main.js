@@ -55,7 +55,6 @@ function selectAnimation() {
     time = Math.random() * 7000 + 7000;
     let currentAnimation =
         listAnimations[Math.floor(Math.random() * listAnimations.length)];
-    console.log(currentAnimation);
     if (lastAnim !== currentAnimation.index) {
         lastAnim = currentAnimation.index;
         let anim = new currentAnimation.anim();
@@ -104,4 +103,5 @@ function addEvents() {
 
 window.onload = () => {
     init();
+    console.log('link', 'https://github.com/baohangxing/hiphop_forever_radio');
 };

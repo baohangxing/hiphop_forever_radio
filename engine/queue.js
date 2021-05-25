@@ -49,9 +49,9 @@ class Queue {
     }
 
     _playLoop() {
-        this._currentSong = this._songs.length
-            ? this.removeFromQueue({ fromTop: true })
-            : this._currentSong;
+        this._currentSong =
+            this._songs[Math.floor(Math.random() * this._songs.length)];
+        console.log(this._songs, this._currentSong);
         const bitRate = this._getBitRate(this._currentSong);
 
         const songReadable = Fs.createReadStream(this._currentSong);
@@ -68,31 +68,6 @@ class Queue {
 
     startStreaming() {
         this._playLoop();
-    }
-
-    _boxChildrenIndexToSongsIndex(index) {
-        // converts index of this.box.children array (view layer)
-        // to the index of this._songs array (stream layer)
-        return index - 1;
-    }
-
-    _createAndAppendToSongs(song) {
-        this._songs.push(song);
-    }
-
-    createAndAppendToQueue(song) {
-        this._createAndAppendToSongs(song);
-    }
-
-    _removeFromSongs(index) {
-        const adjustedIndex = this._boxChildrenIndexToSongsIndex(index);
-        return this._songs.splice(adjustedIndex, 1);
-    }
-
-    removeFromQueue({ fromTop } = {}) {
-        const index = fromTop ? 1 : this._focusIndexer.get();
-        const [song] = this._removeFromSongs(index);
-        return song;
     }
 }
 
