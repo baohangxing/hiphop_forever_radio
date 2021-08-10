@@ -22,16 +22,19 @@ class Radio {
     }
 
     togglePlay() {
-        if (!this.canPlay) {
-            this.init();
-            this.canPlay = true;
-        }
         if (this.player.paused) {
             this.audioContext.resume();
             this.player.play();
         } else {
             this.player.pause();
         }
+    }
+
+    initPlay() {
+        this.init();
+        this.canPlay = true;
+        this.audioContext.resume();
+        return this.player.play();
     }
 
     update() {

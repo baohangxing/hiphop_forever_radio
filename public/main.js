@@ -45,7 +45,20 @@ function init() {
         { index: 1, anim: Animation02 },
     ];
 
-    radio.togglePlay();
+    var promise = radio.initPlay();
+    if (promise !== undefined) {
+        promise
+            .then(_ => {
+                radio.togglePlay();
+            })
+            .catch(error => {
+                canvas.addEventListener('click', function initFun() {
+                    radio.togglePlay();
+                    canvas.removeEventListener('click', initFun);
+                });
+                //  Autoplay was prevented.
+            });
+    }
     selectAnimation();
     addEvents();
     update();
@@ -80,14 +93,6 @@ function update(t) {
         selectAnimation();
         ini = null;
     }
-}
-
-function togglePlay(e) {
-    e.preventDefault();
-    radio.togglePlay();
-    if (!animation) selectAnimation();
-    cancelAnimationFrame(u);
-    update();
 }
 
 function addEvents() {
